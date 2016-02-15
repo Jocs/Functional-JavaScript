@@ -1,0 +1,15 @@
+{
+  "name": "functional-javascript",
+  "version": "1.0.0",
+  "description": "Functional JavaScript learning",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Functional",
+    "JavaScript"
+  ],
+  "author": "Jocs",
+  "license": "ISC"
+}
