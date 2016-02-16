@@ -1,0 +1,1 @@
+export const splat = fun => (...args) => fun(...args)
