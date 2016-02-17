@@ -8,7 +8,7 @@ const build = function(rootPath, cb) {
 		dirs.forEach(dir => {
 			const pathName = path.join(rootPath, dir)
 			if (fs.statSync(pathName).isDirectory() && /^chapter[\d]+$/.test(dir)) {
-				const writeString = `require("babel-register")\nrequire("../src/${dir}")`
+				const writeString = `require('babel-register')\nrequire('../src/${dir}')\n`
 				if (!fs.existsSync(`${__dirname}/dist`)) fs.mkdirSync(`${__dirname}/dist`)
 				fs.writeFile(`${__dirname}/dist/${dir}.js`, writeString, err => {
 					if (err) console.log(err)

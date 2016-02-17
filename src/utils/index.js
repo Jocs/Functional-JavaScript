@@ -26,3 +26,15 @@ export const comparator = pred => {
 		else return 0
 	}
 }
+
+export const allOf = (...args) => _.reduceRight(args, (truth, f) => truth && f(), true)
+export const anyOf = (...args) => _.reduceRight(args, (truth, f) => truth || f(), false)
+
+export const compliment = pred => (...args) => !pred(...args)
+
+
+
+
+
+
+

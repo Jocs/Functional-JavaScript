@@ -47,9 +47,3 @@ listPromise.then(data => {
 	console.log(selectHairColor(data))
 	console.log(mergeResults(selectNames(data), selectAges(data)))
 })
-
-
-
-
-
-
