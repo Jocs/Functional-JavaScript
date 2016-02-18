@@ -4,7 +4,7 @@ const path = require('path')
 const build = function(rootPath, cb) {
 	if (!fs.existsSync(rootPath)) return
 	fs.readdir(rootPath, (err, dirs) => {
-		if (err !== null) return cb(err)
+		if (err) return cb(err)
 		dirs.forEach(dir => {
 			const pathName = path.join(rootPath, dir)
 			if (fs.statSync(pathName).isDirectory() && /^chapter[\d]+$/.test(dir)) {
