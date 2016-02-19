@@ -1,6 +1,6 @@
 import _ from 'underscore'
 // splat 接受一个函数作为参数，返回一个函数，该函数的作用是用前面的参数函数执行现有的参数。
-export const splat = fun => (...args) => fun(...args)
+export const splat = fun => args => fun(...args)
 
 const fail = msg => _.identity(msg)
 const isIndexed = data => _.isArray(data) || _.isString(data)
@@ -94,14 +94,29 @@ export const validator = (msg, fn) => {
 // }
 // 用下面递归的方法，消除for循环的使用。函数式编程尽量使用递归来替代迭代
 // dispatch函数甚至可以dispatch一个dispatch返回的函数
+// dispatch 还可以实现重载先前的函数
 export const dispatch = (first, ...rest) => target => {
 	return first ? first(target) || dispatch(...rest)(target) : undefined
 }
 
+export const curry = func => arg => func(arg)
+export const curry2 = func => secondArg => firstArg => func(firstArg, secondArg)
+export const curry3 = func => thirdArg => secondArg => firstArg => func(firstArg, secondArg, thirdArg)
 
+export const partial1 = (func, arg1) => (...args) => func(arg1, ...args)
+export const partial2 = (func, arg1, arg2) => (...args) => func(arg1, arg2, ...args)
+export const partial = (func, ...preArgs) => (...lastArgs) => func(...preArgs, ...lastArgs)
 
+export const condition1 = (...validators) => (fun, arg) => {
+	const errors = validators.map(isValid => isValid(arg) ? [] : [isValid.message])
+	const msgArray = Array.prototype.concat.apply([], errors)
+	if (!_.isEmpty(msgArray)) {
+		return msgArray.join(', ')
+	}
+	return fun(arg)
+}
 
-
+export const cat = (first, ...rest) => first === undefined ? [] : first.concat(cat(...rest))
 
 
 

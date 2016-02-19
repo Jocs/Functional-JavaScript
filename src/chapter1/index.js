@@ -3,7 +3,7 @@ import { splat, nth, second, comparator, lessOrEqual } from '../utils'
 import fs from 'fs'
 
 const addArrayElements = splat((x, y) => x + y)
-console.log('3 add 4 is ' + addArrayElements(3, 4))
+console.log('3 add 4 is ' + addArrayElements([3, 4]))
 
 const joinElements = splat(array => array.join(' '))
 console.log(`$ and * joined is ${joinElements(['$', '*'])}`)
