@@ -118,7 +118,7 @@ export const condition1 = (...validators) => (fun, arg) => {
 
 export const cat = (first, ...rest) => first === undefined ? [] : first.concat(cat(...rest))
 
-
+export const isEven = num => num % 2 === 0
 
 
 
