@@ -120,6 +120,8 @@ export const cat = (first, ...rest) => first === undefined ? [] : first.concat(c
 
 export const isEven = num => num % 2 === 0
 
+export const repeatedly = (times, fun) => _.map(_.range(times), fun)
+
 
 
 
