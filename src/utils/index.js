@@ -122,6 +122,14 @@ export const isEven = num => num % 2 === 0
 
 export const repeatedly = (times, fun) => _.map(_.range(times), fun)
 
+export const deepFreeze = obj => {
+	if (!Object.isFrozen(obj)) Object.freeze(obj)
+	for (let key in obj) {
+		if (!obj.hasOwnProperty(key) || !_.isObject(obj[key])) continue
+		deepFreeze(obj[key])
+	}
+}
+
 
 
 

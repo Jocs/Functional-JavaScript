@@ -1,7 +1,8 @@
 import _ from 'underscore'
 import {
 	partial1,
-	repeatedly
+	repeatedly,
+	deepFreeze
 } from '../utils'
 
 const rand = partial1(_.random, 1)
@@ -17,3 +18,16 @@ const randString = len => {
 }
 
 console.log(randString(8))
+const freezeObj = {
+	a: 'b',
+	c: {
+		d: 'e',
+		f: 'g'
+	}
+}
+
+deepFreeze(freezeObj)
+// freezeObj.c.d = 'change'
+console.log(freezeObj)
+
+
